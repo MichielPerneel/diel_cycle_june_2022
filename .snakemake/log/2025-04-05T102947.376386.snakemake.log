@@ -1,0 +1,734 @@
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however crucial for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cluster nodes: 500
+Job stats:
+job                            count
+---------------------------  -------
+all                                1
+create_longorfs_mmseqs_db          1
+create_metatranscriptome_db        1
+eukprot_annotation                 1
+functional_annotation              1
+kallisto_index                     1
+kallisto_quant                    25
+mmseqs_pfam_search                 1
+predict_long_orfs                  1
+predict_proteins                   1
+rename_transcripts                 1
+total                             35
+
+Resources before job selection: {'_cores': 9223372036854775807, '_nodes': 500}
+Ready jobs (1)
+Select jobs to execute...
+Using greedy selector because only single job has to be scheduled.
+Selected jobs (1)
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 499}
+
+[Sat Apr  5 10:30:02 2025]
+rule rename_transcripts:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/metatranscriptome.fasta
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/rename_transcripts.log
+    jobid: 127
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta
+    resources: mem_mb=1766, mem_mib=1685, disk_mb=1766, disk_mib=1685, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "rename_transcripts", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/metatranscriptome.fasta"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta"], "wildcards": {}, "params": {"length": 300}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/rename_transcripts.log"], "threads": 1, "resources": {"mem_mb": 1766, "mem_mib": 1685, "disk_mb": 1766, "disk_mib": 1685, "tmpdir": "<TBD>"}, "jobid": 127, "cluster": {"jobname": "rename_transcripts.", "nodes": 1, "ppn": 8, "mem": "8gb", "walltime": "06:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'rename_transcripts:' --allowed-rules 'rename_transcripts' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=1766' 'mem_mib=1685' 'disk_mb=1766' 'disk_mib=1685' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/metatranscriptome.fasta' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/127.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/127.jobfailed'; exit 1)
+
+Submitted job 127 with external jobid '52883058'.
+[Sat Apr  5 10:32:06 2025]
+Finished job 127.
+1 of 35 steps (3%) done
+Resources before job selection: {'_cores': 9223372036854775807, '_nodes': 500}
+Ready jobs (2)
+Select jobs to execute...
+Selected jobs (2)
+Resources after job selection: {'_cores': 9223372036854775805, '_nodes': 498}
+
+[Sat Apr  5 10:32:07 2025]
+rule predict_long_orfs:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/final_metatranscriptome.fasta.transdecoder_dir/longest_orfs.pep
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/protein/predict_long_orfs.log
+    jobid: 134
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/final_metatranscriptome.fasta.transdecoder_dir/longest_orfs.pep; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta
+    resources: mem_mb=1210, mem_mib=1154, disk_mb=1210, disk_mib=1154, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "predict_long_orfs", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/final_metatranscriptome.fasta.transdecoder_dir/longest_orfs.pep"], "wildcards": {}, "params": {"protein_dir": "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein"}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/protein/predict_long_orfs.log"], "threads": 1, "resources": {"mem_mb": 1210, "mem_mib": 1154, "disk_mb": 1210, "disk_mib": 1154, "tmpdir": "<TBD>"}, "jobid": 134, "cluster": {"jobname": "predict_long_orfs.", "nodes": 1, "ppn": 30, "mem": "60gb", "walltime": "02:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'predict_long_orfs:' --allowed-rules 'predict_long_orfs' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=1210' 'mem_mib=1154' 'disk_mb=1210' 'disk_mib=1154' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/134.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/134.jobfailed'; exit 1)
+
+Submitted job 134 with external jobid '52883059'.
+
+[Sat Apr  5 10:32:12 2025]
+rule kallisto_index:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/index.log
+    jobid: 139
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta
+    resources: mem_mb=1210, mem_mib=1154, disk_mb=1210, disk_mib=1154, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_index", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "wildcards": {}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/index.log"], "threads": 1, "resources": {"mem_mb": 1210, "mem_mib": 1154, "disk_mb": 1210, "disk_mib": 1154, "tmpdir": "<TBD>"}, "jobid": 139, "cluster": {"jobname": "kallisto_index.", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "12:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_index:' --allowed-rules 'kallisto_index' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=1210' 'mem_mib=1154' 'disk_mb=1210' 'disk_mib=1154' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/139.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/139.jobfailed'; exit 1)
+
+Submitted job 139 with external jobid '52883060'.
+[Sat Apr  5 10:40:22 2025]
+Finished job 139.
+2 of 35 steps (6%) done
+Resources before job selection: {'_cores': 9223372036854775806, '_nodes': 499}
+Ready jobs (25)
+Select jobs to execute...
+Selected jobs (25)
+Resources after job selection: {'_cores': 9223372036854775781, '_nodes': 474}
+
+[Sat Apr  5 10:40:23 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_11
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_11.log
+    jobid: 149
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_11; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_11
+    resources: mem_mb=11582, mem_mib=11046, disk_mb=11582, disk_mib=11046, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_11"], "wildcards": {"sample": "330_11"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_11.log"], "threads": 1, "resources": {"mem_mb": 11582, "mem_mib": 11046, "disk_mb": 11582, "disk_mib": 11046, "tmpdir": "<TBD>"}, "jobid": 149, "cluster": {"jobname": "kallisto_quant.sample=330_11", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_11' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11582' 'mem_mib=11046' 'disk_mb=11582' 'disk_mib=11046' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/149.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/149.jobfailed'; exit 1)
+
+Submitted job 149 with external jobid '52883062'.
+
+[Sat Apr  5 10:40:27 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_9
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_9.log
+    jobid: 147
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_9; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_9
+    resources: mem_mb=9240, mem_mib=8812, disk_mb=9240, disk_mib=8812, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_9"], "wildcards": {"sample": "330_9"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_9.log"], "threads": 1, "resources": {"mem_mb": 9240, "mem_mib": 8812, "disk_mb": 9240, "disk_mib": 8812, "tmpdir": "<TBD>"}, "jobid": 147, "cluster": {"jobname": "kallisto_quant.sample=330_9", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_9' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=9240' 'mem_mib=8812' 'disk_mb=9240' 'disk_mib=8812' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/147.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/147.jobfailed'; exit 1)
+
+Submitted job 147 with external jobid '52883063'.
+
+[Sat Apr  5 10:40:31 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_24
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_24.log
+    jobid: 162
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_24; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_24
+    resources: mem_mb=11101, mem_mib=10587, disk_mb=11101, disk_mib=10587, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_24"], "wildcards": {"sample": "330_24"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_24.log"], "threads": 1, "resources": {"mem_mb": 11101, "mem_mib": 10587, "disk_mb": 11101, "disk_mib": 10587, "tmpdir": "<TBD>"}, "jobid": 162, "cluster": {"jobname": "kallisto_quant.sample=330_24", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_24' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11101' 'mem_mib=10587' 'disk_mb=11101' 'disk_mib=10587' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/162.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/162.jobfailed'; exit 1)
+
+Submitted job 162 with external jobid '52883064'.
+
+[Sat Apr  5 10:40:35 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_7
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_7.log
+    jobid: 145
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_7; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_7
+    resources: mem_mb=11689, mem_mib=11148, disk_mb=11689, disk_mib=11148, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_7"], "wildcards": {"sample": "330_7"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_7.log"], "threads": 1, "resources": {"mem_mb": 11689, "mem_mib": 11148, "disk_mb": 11689, "disk_mib": 11148, "tmpdir": "<TBD>"}, "jobid": 145, "cluster": {"jobname": "kallisto_quant.sample=330_7", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_7' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11689' 'mem_mib=11148' 'disk_mb=11689' 'disk_mib=11148' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/145.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/145.jobfailed'; exit 1)
+
+Submitted job 145 with external jobid '52883065'.
+
+[Sat Apr  5 10:40:40 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_22
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_22.log
+    jobid: 160
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_22; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_22
+    resources: mem_mb=12309, mem_mib=11739, disk_mb=12309, disk_mib=11739, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_22"], "wildcards": {"sample": "330_22"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_22.log"], "threads": 1, "resources": {"mem_mb": 12309, "mem_mib": 11739, "disk_mb": 12309, "disk_mib": 11739, "tmpdir": "<TBD>"}, "jobid": 160, "cluster": {"jobname": "kallisto_quant.sample=330_22", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_22' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=12309' 'mem_mib=11739' 'disk_mb=12309' 'disk_mib=11739' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/160.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/160.jobfailed'; exit 1)
+
+Submitted job 160 with external jobid '52883066'.
+
+[Sat Apr  5 10:40:44 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_20
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_20.log
+    jobid: 158
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_20; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_20
+    resources: mem_mb=11289, mem_mib=10767, disk_mb=11289, disk_mib=10767, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_20"], "wildcards": {"sample": "330_20"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_20.log"], "threads": 1, "resources": {"mem_mb": 11289, "mem_mib": 10767, "disk_mb": 11289, "disk_mib": 10767, "tmpdir": "<TBD>"}, "jobid": 158, "cluster": {"jobname": "kallisto_quant.sample=330_20", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_20' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11289' 'mem_mib=10767' 'disk_mb=11289' 'disk_mib=10767' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/158.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/158.jobfailed'; exit 1)
+
+Submitted job 158 with external jobid '52883067'.
+
+[Sat Apr  5 10:40:48 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_5
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_5.log
+    jobid: 143
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_5; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_5
+    resources: mem_mb=11978, mem_mib=11424, disk_mb=11978, disk_mib=11424, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_5"], "wildcards": {"sample": "330_5"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_5.log"], "threads": 1, "resources": {"mem_mb": 11978, "mem_mib": 11424, "disk_mb": 11978, "disk_mib": 11424, "tmpdir": "<TBD>"}, "jobid": 143, "cluster": {"jobname": "kallisto_quant.sample=330_5", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_5' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11978' 'mem_mib=11424' 'disk_mb=11978' 'disk_mib=11424' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/143.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/143.jobfailed'; exit 1)
+
+Submitted job 143 with external jobid '52883068'.
+
+[Sat Apr  5 10:40:52 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_3
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_3.log
+    jobid: 141
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_3; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_3
+    resources: mem_mb=11980, mem_mib=11426, disk_mb=11980, disk_mib=11426, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_3"], "wildcards": {"sample": "330_3"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_3.log"], "threads": 1, "resources": {"mem_mb": 11980, "mem_mib": 11426, "disk_mb": 11980, "disk_mib": 11426, "tmpdir": "<TBD>"}, "jobid": 141, "cluster": {"jobname": "kallisto_quant.sample=330_3", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_3' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11980' 'mem_mib=11426' 'disk_mb=11980' 'disk_mib=11426' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/141.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/141.jobfailed'; exit 1)
+
+Submitted job 141 with external jobid '52883069'.
+
+[Sat Apr  5 10:40:56 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_18
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_18.log
+    jobid: 156
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_18; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_18
+    resources: mem_mb=11265, mem_mib=10744, disk_mb=11265, disk_mib=10744, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_18"], "wildcards": {"sample": "330_18"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_18.log"], "threads": 1, "resources": {"mem_mb": 11265, "mem_mib": 10744, "disk_mb": 11265, "disk_mib": 10744, "tmpdir": "<TBD>"}, "jobid": 156, "cluster": {"jobname": "kallisto_quant.sample=330_18", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_18' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11265' 'mem_mib=10744' 'disk_mb=11265' 'disk_mib=10744' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/156.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/156.jobfailed'; exit 1)
+
+Submitted job 156 with external jobid '52883070'.
+
+[Sat Apr  5 10:41:01 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_16
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_16.log
+    jobid: 154
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_16; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_16
+    resources: mem_mb=11760, mem_mib=11216, disk_mb=11760, disk_mib=11216, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_16"], "wildcards": {"sample": "330_16"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_16.log"], "threads": 1, "resources": {"mem_mb": 11760, "mem_mib": 11216, "disk_mb": 11760, "disk_mib": 11216, "tmpdir": "<TBD>"}, "jobid": 154, "cluster": {"jobname": "kallisto_quant.sample=330_16", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_16' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11760' 'mem_mib=11216' 'disk_mb=11760' 'disk_mib=11216' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/154.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/154.jobfailed'; exit 1)
+
+Submitted job 154 with external jobid '52883071'.
+
+[Sat Apr  5 10:41:05 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_14
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_14.log
+    jobid: 152
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_14; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_14
+    resources: mem_mb=12738, mem_mib=12148, disk_mb=12738, disk_mib=12148, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_14"], "wildcards": {"sample": "330_14"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_14.log"], "threads": 1, "resources": {"mem_mb": 12738, "mem_mib": 12148, "disk_mb": 12738, "disk_mib": 12148, "tmpdir": "<TBD>"}, "jobid": 152, "cluster": {"jobname": "kallisto_quant.sample=330_14", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_14' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=12738' 'mem_mib=12148' 'disk_mb=12738' 'disk_mib=12148' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/152.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/152.jobfailed'; exit 1)
+
+Submitted job 152 with external jobid '52883072'.
+
+[Sat Apr  5 10:41:09 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_12
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_12.log
+    jobid: 150
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_12; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_12
+    resources: mem_mb=12728, mem_mib=12139, disk_mb=12728, disk_mib=12139, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_12"], "wildcards": {"sample": "330_12"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_12.log"], "threads": 1, "resources": {"mem_mb": 12728, "mem_mib": 12139, "disk_mb": 12728, "disk_mib": 12139, "tmpdir": "<TBD>"}, "jobid": 150, "cluster": {"jobname": "kallisto_quant.sample=330_12", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_12' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=12728' 'mem_mib=12139' 'disk_mb=12728' 'disk_mib=12139' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/150.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/150.jobfailed'; exit 1)
+
+Submitted job 150 with external jobid '52883073'.
+
+[Sat Apr  5 10:41:13 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_25
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_25.log
+    jobid: 163
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_25; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_25
+    resources: mem_mb=10631, mem_mib=10139, disk_mb=10631, disk_mib=10139, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_25"], "wildcards": {"sample": "330_25"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_25.log"], "threads": 1, "resources": {"mem_mb": 10631, "mem_mib": 10139, "disk_mb": 10631, "disk_mib": 10139, "tmpdir": "<TBD>"}, "jobid": 163, "cluster": {"jobname": "kallisto_quant.sample=330_25", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_25' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=10631' 'mem_mib=10139' 'disk_mb=10631' 'disk_mib=10139' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/163.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/163.jobfailed'; exit 1)
+
+Submitted job 163 with external jobid '52883074'.
+
+[Sat Apr  5 10:41:17 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_10
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_10.log
+    jobid: 148
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_10; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_10
+    resources: mem_mb=10867, mem_mib=10364, disk_mb=10867, disk_mib=10364, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_10"], "wildcards": {"sample": "330_10"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_10.log"], "threads": 1, "resources": {"mem_mb": 10867, "mem_mib": 10364, "disk_mb": 10867, "disk_mib": 10364, "tmpdir": "<TBD>"}, "jobid": 148, "cluster": {"jobname": "kallisto_quant.sample=330_10", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_10' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=10867' 'mem_mib=10364' 'disk_mb=10867' 'disk_mib=10364' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/148.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/148.jobfailed'; exit 1)
+
+Submitted job 148 with external jobid '52883075'.
+
+[Sat Apr  5 10:41:21 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_8
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_8.log
+    jobid: 146
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_8; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_8
+    resources: mem_mb=11257, mem_mib=10736, disk_mb=11257, disk_mib=10736, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_8"], "wildcards": {"sample": "330_8"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_8.log"], "threads": 1, "resources": {"mem_mb": 11257, "mem_mib": 10736, "disk_mb": 11257, "disk_mib": 10736, "tmpdir": "<TBD>"}, "jobid": 146, "cluster": {"jobname": "kallisto_quant.sample=330_8", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_8' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11257' 'mem_mib=10736' 'disk_mb=11257' 'disk_mib=10736' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/146.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/146.jobfailed'; exit 1)
+
+Submitted job 146 with external jobid '52883076'.
+
+[Sat Apr  5 10:41:25 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_23
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_23.log
+    jobid: 161
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_23; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_23
+    resources: mem_mb=11345, mem_mib=10820, disk_mb=11345, disk_mib=10820, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_23"], "wildcards": {"sample": "330_23"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_23.log"], "threads": 1, "resources": {"mem_mb": 11345, "mem_mib": 10820, "disk_mb": 11345, "disk_mib": 10820, "tmpdir": "<TBD>"}, "jobid": 161, "cluster": {"jobname": "kallisto_quant.sample=330_23", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_23' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11345' 'mem_mib=10820' 'disk_mb=11345' 'disk_mib=10820' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/161.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/161.jobfailed'; exit 1)
+
+Submitted job 161 with external jobid '52883077'.
+
+[Sat Apr  5 10:41:29 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_6
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_6.log
+    jobid: 144
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_6; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_6
+    resources: mem_mb=11641, mem_mib=11102, disk_mb=11641, disk_mib=11102, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_6"], "wildcards": {"sample": "330_6"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_6.log"], "threads": 1, "resources": {"mem_mb": 11641, "mem_mib": 11102, "disk_mb": 11641, "disk_mib": 11102, "tmpdir": "<TBD>"}, "jobid": 144, "cluster": {"jobname": "kallisto_quant.sample=330_6", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_6' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11641' 'mem_mib=11102' 'disk_mb=11641' 'disk_mib=11102' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/144.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/144.jobfailed'; exit 1)
+
+Submitted job 144 with external jobid '52883078'.
+
+[Sat Apr  5 10:41:33 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_21
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_21.log
+    jobid: 159
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_21; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_21
+    resources: mem_mb=11962, mem_mib=11408, disk_mb=11962, disk_mib=11408, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_21"], "wildcards": {"sample": "330_21"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_21.log"], "threads": 1, "resources": {"mem_mb": 11962, "mem_mib": 11408, "disk_mb": 11962, "disk_mib": 11408, "tmpdir": "<TBD>"}, "jobid": 159, "cluster": {"jobname": "kallisto_quant.sample=330_21", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_21' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11962' 'mem_mib=11408' 'disk_mb=11962' 'disk_mib=11408' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/159.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/159.jobfailed'; exit 1)
+
+Submitted job 159 with external jobid '52883079'.
+
+[Sat Apr  5 10:41:37 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_4
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_4.log
+    jobid: 142
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_4; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_4
+    resources: mem_mb=12096, mem_mib=11536, disk_mb=12096, disk_mib=11536, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_4"], "wildcards": {"sample": "330_4"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_4.log"], "threads": 1, "resources": {"mem_mb": 12096, "mem_mib": 11536, "disk_mb": 12096, "disk_mib": 11536, "tmpdir": "<TBD>"}, "jobid": 142, "cluster": {"jobname": "kallisto_quant.sample=330_4", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_4' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=12096' 'mem_mib=11536' 'disk_mb=12096' 'disk_mib=11536' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/142.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/142.jobfailed'; exit 1)
+
+Submitted job 142 with external jobid '52883080'.
+
+[Sat Apr  5 10:41:42 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_19
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_19.log
+    jobid: 157
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_19; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_19
+    resources: mem_mb=11536, mem_mib=11002, disk_mb=11536, disk_mib=11002, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_19"], "wildcards": {"sample": "330_19"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_19.log"], "threads": 1, "resources": {"mem_mb": 11536, "mem_mib": 11002, "disk_mb": 11536, "disk_mib": 11002, "tmpdir": "<TBD>"}, "jobid": 157, "cluster": {"jobname": "kallisto_quant.sample=330_19", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_19' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11536' 'mem_mib=11002' 'disk_mb=11536' 'disk_mib=11002' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/157.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/157.jobfailed'; exit 1)
+
+Submitted job 157 with external jobid '52883081'.
+
+[Sat Apr  5 10:41:46 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_2
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_2.log
+    jobid: 140
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_2; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_2
+    resources: mem_mb=12247, mem_mib=11680, disk_mb=12247, disk_mib=11680, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_2"], "wildcards": {"sample": "330_2"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_2.log"], "threads": 1, "resources": {"mem_mb": 12247, "mem_mib": 11680, "disk_mb": 12247, "disk_mib": 11680, "tmpdir": "<TBD>"}, "jobid": 140, "cluster": {"jobname": "kallisto_quant.sample=330_2", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_2' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=12247' 'mem_mib=11680' 'disk_mb=12247' 'disk_mib=11680' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/140.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/140.jobfailed'; exit 1)
+
+Submitted job 140 with external jobid '52883082'.
+
+[Sat Apr  5 10:41:50 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_17
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_17.log
+    jobid: 155
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_17; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_17
+    resources: mem_mb=11590, mem_mib=11054, disk_mb=11590, disk_mib=11054, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_17"], "wildcards": {"sample": "330_17"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_17.log"], "threads": 1, "resources": {"mem_mb": 11590, "mem_mib": 11054, "disk_mb": 11590, "disk_mib": 11054, "tmpdir": "<TBD>"}, "jobid": 155, "cluster": {"jobname": "kallisto_quant.sample=330_17", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_17' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11590' 'mem_mib=11054' 'disk_mb=11590' 'disk_mib=11054' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/155.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/155.jobfailed'; exit 1)
+
+Submitted job 155 with external jobid '52883083'.
+
+[Sat Apr  5 10:41:54 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_1
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_1.log
+    jobid: 138
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_1; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_1
+    resources: mem_mb=11919, mem_mib=11367, disk_mb=11919, disk_mib=11367, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_1"], "wildcards": {"sample": "330_1"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_1.log"], "threads": 1, "resources": {"mem_mb": 11919, "mem_mib": 11367, "disk_mb": 11919, "disk_mib": 11367, "tmpdir": "<TBD>"}, "jobid": 138, "cluster": {"jobname": "kallisto_quant.sample=330_1", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_1' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11919' 'mem_mib=11367' 'disk_mb=11919' 'disk_mib=11367' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/138.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/138.jobfailed'; exit 1)
+
+Submitted job 138 with external jobid '52883084'.
+
+[Sat Apr  5 10:41:59 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_15
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_15.log
+    jobid: 153
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_15; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_15
+    resources: mem_mb=11712, mem_mib=11170, disk_mb=11712, disk_mib=11170, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_15"], "wildcards": {"sample": "330_15"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_15.log"], "threads": 1, "resources": {"mem_mb": 11712, "mem_mib": 11170, "disk_mb": 11712, "disk_mib": 11170, "tmpdir": "<TBD>"}, "jobid": 153, "cluster": {"jobname": "kallisto_quant.sample=330_15", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_15' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11712' 'mem_mib=11170' 'disk_mb=11712' 'disk_mib=11170' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/153.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/153.jobfailed'; exit 1)
+
+Submitted job 153 with external jobid '52883085'.
+
+[Sat Apr  5 10:42:03 2025]
+rule kallisto_quant:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_1.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_2.clean.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_13
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_13.log
+    jobid: 151
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_13; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx
+    wildcards: sample=330_13
+    resources: mem_mb=11300, mem_mib=10777, disk_mb=11300, disk_mib=10777, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_quant", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_1.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_2.clean.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quantification/330_13"], "wildcards": {"sample": "330_13"}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/quantification/330_13.log"], "threads": 1, "resources": {"mem_mb": 11300, "mem_mib": 10777, "disk_mb": 11300, "disk_mib": 10777, "tmpdir": "<TBD>"}, "jobid": 151, "cluster": {"jobname": "kallisto_quant.sample=330_13", "nodes": 1, "ppn": 60, "mem": "120gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_quant:sample=330_13' --allowed-rules 'kallisto_quant' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=11300' 'mem_mib=10777' 'disk_mb=11300' 'disk_mib=10777' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_1.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_2.clean.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.idx' '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/150bae0becd45fc2213994137d9ef260_' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/151.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/151.jobfailed'; exit 1)
+
+Submitted job 151 with external jobid '52883086'.
+[Sat Apr  5 10:46:45 2025]
+Finished job 147.
+3 of 35 steps (9%) done
+[Sat Apr  5 10:48:22 2025]
+Finished job 163.
+4 of 35 steps (11%) done
+[Sat Apr  5 10:48:33 2025]
+Finished job 162.
+5 of 35 steps (14%) done
+[Sat Apr  5 10:48:45 2025]
+Finished job 156.
+6 of 35 steps (17%) done
+[Sat Apr  5 10:49:21 2025]
+Finished job 149.
+7 of 35 steps (20%) done
+[Sat Apr  5 10:49:33 2025]
+Finished job 145.
+8 of 35 steps (23%) done
+[Sat Apr  5 10:49:45 2025]
+Finished job 158.
+9 of 35 steps (26%) done
+[Sat Apr  5 10:49:45 2025]
+Finished job 143.
+10 of 35 steps (29%) done
+[Sat Apr  5 10:49:56 2025]
+Finished job 160.
+11 of 35 steps (31%) done
+[Sat Apr  5 10:50:29 2025]
+Finished job 154.
+12 of 35 steps (34%) done
+[Sat Apr  5 10:50:40 2025]
+Finished job 141.
+13 of 35 steps (37%) done
+[Sat Apr  5 10:51:24 2025]
+Finished job 150.
+14 of 35 steps (40%) done
+[Sat Apr  5 10:51:57 2025]
+Finished job 152.
+15 of 35 steps (43%) done
+[Sat Apr  5 10:53:14 2025]
+Finished job 134.
+16 of 35 steps (46%) done
+Resources before job selection: {'_cores': 9223372036854775795, '_nodes': 488}
+Ready jobs (1)
+Select jobs to execute...
+Using greedy selector because only single job has to be scheduled.
+Selected jobs (1)
+Resources after job selection: {'_cores': 9223372036854775794, '_nodes': 487}
+
+[Sat Apr  5 10:53:14 2025]
+rule create_longorfs_mmseqs_db:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/final_metatranscriptome.fasta.transdecoder_dir/longest_orfs.pep
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/longest_orfs_mmseqs_db
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/protein/create_longorfs_mmseqs_db.log
+    jobid: 133
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/longest_orfs_mmseqs_db; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/final_metatranscriptome.fasta.transdecoder_dir/longest_orfs.pep
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "create_longorfs_mmseqs_db", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/final_metatranscriptome.fasta.transdecoder_dir/longest_orfs.pep"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/longest_orfs_mmseqs_db"], "wildcards": {}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/protein/create_longorfs_mmseqs_db.log"], "threads": 1, "resources": {"mem_mb": 1000, "mem_mib": 954, "disk_mb": 1000, "disk_mib": 954, "tmpdir": "<TBD>"}, "jobid": 133, "cluster": {"jobname": "create_longorfs_mmseqs_db.", "nodes": 1, "ppn": 30, "mem": "60gb", "walltime": "00:30:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'create_longorfs_mmseqs_db:' --allowed-rules 'create_longorfs_mmseqs_db' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=1000' 'mem_mib=954' 'disk_mb=1000' 'disk_mib=954' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/final_metatranscriptome.fasta.transdecoder_dir/longest_orfs.pep' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/133.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/133.jobfailed'; exit 1)
+
+Submitted job 133 with external jobid '52883273'.
+[Sat Apr  5 10:53:59 2025]
+Finished job 133.
+17 of 35 steps (49%) done
+Resources before job selection: {'_cores': 9223372036854775795, '_nodes': 488}
+Ready jobs (1)
+Select jobs to execute...
+Using greedy selector because only single job has to be scheduled.
+Selected jobs (1)
+Resources after job selection: {'_cores': 9223372036854775735, '_nodes': 487}
+
+[Sat Apr  5 10:53:59 2025]
+rule mmseqs_pfam_search:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/longest_orfs_mmseqs_db, /data/gent/vo/001/gvo00125/shared/ref_dbs/pfam/pfam_mmseqs_db
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/pfam_mmseqs_hits.m8
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/protein/mmseqs_pfam_search.log
+    jobid: 132
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/pfam_mmseqs_hits.m8; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/longest_orfs_mmseqs_db
+    threads: 60
+    resources: mem_mb=200000, mem_mib=190735, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "mmseqs_pfam_search", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/longest_orfs_mmseqs_db", "/data/gent/vo/001/gvo00125/shared/ref_dbs/pfam/pfam_mmseqs_db"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/pfam_mmseqs_hits.m8"], "wildcards": {}, "params": {"longORFs_dir": "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein", "tmp": "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/longorfs_pfam_tmp", "hits": "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/pfam_mmseqs"}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/protein/mmseqs_pfam_search.log"], "threads": 60, "resources": {"mem_mb": 200000, "mem_mib": 190735, "disk_mb": 1000, "disk_mib": 954, "tmpdir": "<TBD>"}, "jobid": 132, "cluster": {"jobname": "mmseqs_pfam_search.", "nodes": 1, "ppn": 60, "mem": "200gb", "walltime": "10:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "gallade", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'mmseqs_pfam_search:' --allowed-rules 'mmseqs_pfam_search' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=200000' 'mem_mib=190735' 'disk_mb=1000' 'disk_mib=954' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/longest_orfs_mmseqs_db' '/data/gent/vo/001/gvo00125/shared/ref_dbs/pfam/pfam_mmseqs_db' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/132.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/132.jobfailed'; exit 1)
+
+Submitted job 132 with external jobid '26561710'.
+[Sat Apr  5 10:54:09 2025]
+Finished job 148.
+18 of 35 steps (51%) done
+[Sat Apr  5 10:56:32 2025]
+Finished job 146.
+19 of 35 steps (54%) done
+[Sat Apr  5 10:56:54 2025]
+Finished job 144.
+20 of 35 steps (57%) done
+[Sat Apr  5 10:57:05 2025]
+Finished job 161.
+21 of 35 steps (60%) done
+[Sat Apr  5 10:57:55 2025]
+Finished job 157.
+22 of 35 steps (63%) done
+[Sat Apr  5 10:58:05 2025]
+Finished job 159.
+23 of 35 steps (66%) done
+[Sat Apr  5 10:58:05 2025]
+Finished job 155.
+24 of 35 steps (69%) done
+[Sat Apr  5 10:59:15 2025]
+Finished job 142.
+25 of 35 steps (71%) done
+[Sat Apr  5 10:59:25 2025]
+Finished job 153.
+26 of 35 steps (74%) done
+[Sat Apr  5 10:59:35 2025]
+Finished job 138.
+27 of 35 steps (77%) done
+[Sat Apr  5 10:59:35 2025]
+Finished job 151.
+28 of 35 steps (80%) done
+[Sat Apr  5 11:00:16 2025]
+Finished job 140.
+29 of 35 steps (83%) done
+[Sat Apr  5 14:05:01 2025]
+Finished job 132.
+30 of 35 steps (86%) done
+Resources before job selection: {'_cores': 9223372036854775807, '_nodes': 500}
+Ready jobs (1)
+Select jobs to execute...
+Using greedy selector because only single job has to be scheduled.
+Selected jobs (1)
+Resources after job selection: {'_cores': 9223372036854775806, '_nodes': 499}
+
+[Sat Apr  5 14:05:01 2025]
+rule predict_proteins:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/pfam_mmseqs_hits.m8, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/final_metatranscriptome.fasta.transdecoder_dir/longest_orfs.pep
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.bed, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.cds, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.gff3, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.pep
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/protein/predict_proteins.log
+    jobid: 131
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.pep; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/pfam_mmseqs_hits.m8, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/final_metatranscriptome.fasta.transdecoder_dir/longest_orfs.pep
+    resources: mem_mb=1914, mem_mib=1826, disk_mb=1914, disk_mib=1826, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "predict_proteins", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/pfam_mmseqs_hits.m8", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/final_metatranscriptome.fasta.transdecoder_dir/longest_orfs.pep"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.bed", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.cds", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.gff3", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.pep"], "wildcards": {}, "params": {"longORFs_dir": "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein"}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/protein/predict_proteins.log"], "threads": 1, "resources": {"mem_mb": 1914, "mem_mib": 1826, "disk_mb": 1914, "disk_mib": 1826, "tmpdir": "<TBD>"}, "jobid": 131, "cluster": {"jobname": "predict_proteins.", "nodes": 1, "ppn": 30, "mem": "150gb", "walltime": "12:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "gallade", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'predict_proteins:' --allowed-rules 'predict_proteins' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=1914' 'mem_mib=1826' 'disk_mb=1914' 'disk_mib=1826' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/rnaSPAdes/final_metatranscriptome.fasta' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/pfam_mmseqs_hits.m8' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/final_metatranscriptome.fasta.transdecoder_dir/longest_orfs.pep' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/131.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/131.jobfailed'; exit 1)
+
+Submitted job 131 with external jobid '26570608'.
+[Sat Apr  5 15:22:36 2025]
+Finished job 131.
+31 of 35 steps (89%) done
+Resources before job selection: {'_cores': 9223372036854775807, '_nodes': 500}
+Ready jobs (2)
+Select jobs to execute...
+Selected jobs (2)
+Resources after job selection: {'_cores': 9223372036854775746, '_nodes': 498}
+
+[Sat Apr  5 15:22:37 2025]
+rule create_metatranscriptome_db:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.pep
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome_mmseqsDB
+    jobid: 130
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome_mmseqsDB; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.pep
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "create_metatranscriptome_db", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.pep"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome_mmseqsDB"], "wildcards": {}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 1000, "mem_mib": 954, "disk_mb": 1000, "disk_mib": 954, "tmpdir": "<TBD>"}, "jobid": 130, "cluster": {"jobname": "create_metatranscriptome_db.", "nodes": 1, "ppn": 30, "mem": "60gb", "walltime": "01:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "gallade", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'create_metatranscriptome_db:' --allowed-rules 'create_metatranscriptome_db' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=1000' 'mem_mib=954' 'disk_mb=1000' 'disk_mib=954' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.pep' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/130.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/130.jobfailed'; exit 1)
+
+Submitted job 130 with external jobid '26570614'.
+
+[Sat Apr  5 15:22:41 2025]
+rule functional_annotation:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.pep
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/annotation/functional_eggnog/functional_annotation.emapper.annotations
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/functional_annotation.log
+    jobid: 137
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/annotation/functional_eggnog/functional_annotation.emapper.annotations; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.pep
+    threads: 60
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "functional_annotation", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.pep"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/annotation/functional_eggnog/functional_annotation.emapper.annotations"], "wildcards": {}, "params": {"eggnog_ref_dir": "/data/gent/vo/001/gvo00125/shared/ref_dbs/eggnog", "eggnog_out_dir": "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/annotation/functional_eggnog"}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/functional_annotation.log"], "threads": 60, "resources": {"mem_mb": 1000, "mem_mib": 954, "disk_mb": 1000, "disk_mib": 954, "tmpdir": "<TBD>"}, "jobid": 137, "cluster": {"jobname": "functional_annotation.", "nodes": 1, "ppn": 60, "mem": "150gb", "walltime": "24:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "gallade", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'functional_annotation:' --allowed-rules 'functional_annotation' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=1000' 'mem_mib=954' 'disk_mb=1000' 'disk_mib=954' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome.pep' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/137.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/137.jobfailed'; exit 1)
+
+Submitted job 137 with external jobid '26570615'.
+[Sat Apr  5 15:23:56 2025]
+Finished job 130.
+32 of 35 steps (91%) done
+Resources before job selection: {'_cores': 9223372036854775747, '_nodes': 499}
+Ready jobs (1)
+Select jobs to execute...
+Using greedy selector because only single job has to be scheduled.
+Selected jobs (1)
+Resources after job selection: {'_cores': 9223372036854775687, '_nodes': 498}
+
+[Sat Apr  5 15:23:56 2025]
+rule eukprot_annotation:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome_mmseqsDB, /data/gent/vo/001/gvo00125/shared/ref_dbs/eukprot/eukprot
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/annotation/taxonomy_eukprot/eukprot_annotation.m8
+    jobid: 129
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/annotation/taxonomy_eukprot/eukprot_annotation.m8; Input files updated by another job: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome_mmseqsDB
+    threads: 60
+    resources: mem_mb=250000, mem_mib=238419, disk_mb=17831, disk_mib=17005, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "eukprot_annotation", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome_mmseqsDB", "/data/gent/vo/001/gvo00125/shared/ref_dbs/eukprot/eukprot"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/annotation/taxonomy_eukprot/eukprot_annotation.m8"], "wildcards": {}, "params": {"eukprot_out_dir": "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/annotation/taxonomy_eukprot", "tmp": "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch"}, "log": [], "threads": 60, "resources": {"mem_mb": 250000, "mem_mib": 238419, "disk_mb": 17831, "disk_mib": 17005, "tmpdir": "<TBD>"}, "jobid": 129, "cluster": {"jobname": "eukprot_annotation.", "nodes": 1, "ppn": 60, "mem": "150gb", "walltime": "10:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "gallade", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'eukprot_annotation:' --allowed-rules 'eukprot_annotation' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=250000' 'mem_mib=238419' 'disk_mb=17831' 'disk_mib=17005' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/assembly/protein/metatranscriptome_mmseqsDB' '/data/gent/vo/001/gvo00125/shared/ref_dbs/eukprot/eukprot' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'mtime' --skip-script-cleanup  --use-conda  --conda-frontend 'conda' --conda-prefix 'envs/' --conda-base-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/129.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.d1nygkus/129.jobfailed'; exit 1)
+
+Submitted job 129 with external jobid '26570617'.
+[Sat Apr  5 16:03:48 2025]
+Finished job 129.
+33 of 35 steps (94%) done

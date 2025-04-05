@@ -1,0 +1,13 @@
+#Summary
+#Generated on	Fri Mar 01 21:30:27 CET 2024
+#Version	5
+chroms	1
+bases	126056
+defined	82755
+undefined	43301
+contigs	92
+scaffolds	92
+interpad	300
+source	/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/ERCC92/ERCC92.fa
+bytes	85553
+last modified	1709313697231

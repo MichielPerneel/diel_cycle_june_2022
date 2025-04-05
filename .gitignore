@@ -1,0 +1,7 @@
+data/*
+config.sh
+config.yaml
+submit_snakemake.*
+hpc_config/*
+envs/*
+

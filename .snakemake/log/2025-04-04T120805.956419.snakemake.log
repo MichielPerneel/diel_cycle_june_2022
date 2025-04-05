@@ -1,0 +1,864 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 500
+Conda environments: ignored
+Job stats:
+job                            count
+---------------------------  -------
+all                                1
+bbmap                             25
+cluster_assemblies                 1
+create_longorfs_mmseqs_db          1
+create_metatranscriptome_db        1
+eukprot_annotation                 1
+functional_annotation              1
+kallisto_index                     1
+kallisto_index_ERCC                1
+kallisto_quant                    25
+kallisto_quant_ERCC               25
+mmseqs_pfam_search                 1
+predict_long_orfs                  1
+predict_proteins                   1
+rename_transcripts                 1
+rnaSPAdes                         25
+sample_rRNA_cleanup               25
+total                            137
+
+Resources before job selection: {'_cores': 9223372036854775807, '_nodes': 500}
+Ready jobs (26)
+Select jobs to execute...
+Selected jobs (26)
+Resources after job selection: {'_cores': 9223372036854775781, '_nodes': 474}
+
+[Fri Apr  4 12:08:22 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_14_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_14_2.rRNA.fastq.gz
+    jobid: 55
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_2.trimmed.fastq.gz
+    wildcards: sample=330_14
+    resources: mem_mb=5543, mem_mib=5287, disk_mb=5543, disk_mib=5287, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_14_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_14_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_14"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5543, "mem_mib": 5287, "disk_mb": 5543, "disk_mib": 5287, "tmpdir": "<TBD>"}, "jobid": 55, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_14", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_14' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5543' 'mem_mib=5287' 'disk_mb=5543' 'disk_mib=5287' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/55.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/55.jobfailed'; exit 1)
+
+Submitted job 55 with external jobid '52855317'.
+
+[Fri Apr  4 12:08:28 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_10_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_10_2.rRNA.fastq.gz
+    jobid: 39
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_2.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_1.trimmed.fastq.gz
+    wildcards: sample=330_10
+    resources: mem_mb=4948, mem_mib=4719, disk_mb=4948, disk_mib=4719, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_10_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_10_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_10"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 4948, "mem_mib": 4719, "disk_mb": 4948, "disk_mib": 4719, "tmpdir": "<TBD>"}, "jobid": 39, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_10", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_10' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=4948' 'mem_mib=4719' 'disk_mb=4948' 'disk_mib=4719' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/39.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/39.jobfailed'; exit 1)
+
+Submitted job 39 with external jobid '52855318'.
+
+[Fri Apr  4 12:08:32 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_25_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_25_2.rRNA.fastq.gz
+    jobid: 99
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_2.trimmed.fastq.gz
+    wildcards: sample=330_25
+    resources: mem_mb=4812, mem_mib=4590, disk_mb=4812, disk_mib=4590, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_25_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_25_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_25"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 4812, "mem_mib": 4590, "disk_mb": 4812, "disk_mib": 4590, "tmpdir": "<TBD>"}, "jobid": 99, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_25", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_25' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=4812' 'mem_mib=4590' 'disk_mb=4812' 'disk_mib=4590' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/99.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/99.jobfailed'; exit 1)
+
+Submitted job 99 with external jobid '52855319'.
+
+[Fri Apr  4 12:08:36 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_6_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_6_2.rRNA.fastq.gz
+    jobid: 23
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_2.trimmed.fastq.gz
+    wildcards: sample=330_6
+    resources: mem_mb=5179, mem_mib=4940, disk_mb=5179, disk_mib=4940, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_6_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_6_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_6"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5179, "mem_mib": 4940, "disk_mb": 5179, "disk_mib": 4940, "tmpdir": "<TBD>"}, "jobid": 23, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_6", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_6' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5179' 'mem_mib=4940' 'disk_mb=5179' 'disk_mib=4940' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/23.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/23.jobfailed'; exit 1)
+
+Submitted job 23 with external jobid '52855387'.
+
+[Fri Apr  4 12:08:41 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_21_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_21_2.rRNA.fastq.gz
+    jobid: 83
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_2.trimmed.fastq.gz
+    wildcards: sample=330_21
+    resources: mem_mb=5321, mem_mib=5075, disk_mb=5321, disk_mib=5075, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_21_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_21_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_21"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5321, "mem_mib": 5075, "disk_mb": 5321, "disk_mib": 5075, "tmpdir": "<TBD>"}, "jobid": 83, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_21", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_21' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5321' 'mem_mib=5075' 'disk_mb=5321' 'disk_mib=5075' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/83.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/83.jobfailed'; exit 1)
+
+Submitted job 83 with external jobid '52855388'.
+
+[Fri Apr  4 12:08:45 2025]
+rule kallisto_index_ERCC:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/ERCC92/ERCC92.fa
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/ERCC92/ERCC92.idx
+    jobid: 101
+    reason: Missing output files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/ERCC92/ERCC92.idx
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "kallisto_index_ERCC", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/ERCC92/ERCC92.fa"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/ERCC92/ERCC92.idx"], "wildcards": {}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 1000, "mem_mib": 954, "disk_mb": 1000, "disk_mib": 954, "tmpdir": "<TBD>"}, "jobid": 101, "cluster": {"jobname": "kallisto_index_ERCC.", "nodes": 1, "ppn": 10, "mem": "20gb", "walltime": "12:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "gallade", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'kallisto_index_ERCC:' --allowed-rules 'kallisto_index_ERCC' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=1000' 'mem_mib=954' 'disk_mb=1000' 'disk_mib=954' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/ERCC92/ERCC92.fa' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/101.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/101.jobfailed'; exit 1)
+
+Submitted job 101 with external jobid '26555423'.
+
+[Fri Apr  4 12:08:50 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_2_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_2_2.rRNA.fastq.gz
+    jobid: 7
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_2.trimmed.fastq.gz
+    wildcards: sample=330_2
+    resources: mem_mb=5092, mem_mib=4857, disk_mb=5092, disk_mib=4857, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_2_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_2_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_2"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5092, "mem_mib": 4857, "disk_mb": 5092, "disk_mib": 4857, "tmpdir": "<TBD>"}, "jobid": 7, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_2", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_2' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5092' 'mem_mib=4857' 'disk_mb=5092' 'disk_mib=4857' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/7.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/7.jobfailed'; exit 1)
+
+Submitted job 7 with external jobid '52855389'.
+
+[Fri Apr  4 12:08:54 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_17_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_17_2.rRNA.fastq.gz
+    jobid: 67
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_2.trimmed.fastq.gz
+    wildcards: sample=330_17
+    resources: mem_mb=5062, mem_mib=4828, disk_mb=5062, disk_mib=4828, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_17_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_17_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_17"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5062, "mem_mib": 4828, "disk_mb": 5062, "disk_mib": 4828, "tmpdir": "<TBD>"}, "jobid": 67, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_17", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_17' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5062' 'mem_mib=4828' 'disk_mb=5062' 'disk_mib=4828' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/67.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/67.jobfailed'; exit 1)
+
+Submitted job 67 with external jobid '52855390'.
+
+[Fri Apr  4 12:08:59 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_13_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_13_2.rRNA.fastq.gz
+    jobid: 51
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_2.trimmed.fastq.gz
+    wildcards: sample=330_13
+    resources: mem_mb=5025, mem_mib=4793, disk_mb=5025, disk_mib=4793, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_13_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_13_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_13"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5025, "mem_mib": 4793, "disk_mb": 5025, "disk_mib": 4793, "tmpdir": "<TBD>"}, "jobid": 51, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_13", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_13' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5025' 'mem_mib=4793' 'disk_mb=5025' 'disk_mib=4793' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/51.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/51.jobfailed'; exit 1)
+
+Submitted job 51 with external jobid '52855391'.
+
+[Fri Apr  4 12:09:04 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_1_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_1_2.rRNA.fastq.gz
+    jobid: 3
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_2.trimmed.fastq.gz
+    wildcards: sample=330_1
+    resources: mem_mb=5268, mem_mib=5024, disk_mb=5268, disk_mib=5024, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_1_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_1_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_1"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5268, "mem_mib": 5024, "disk_mb": 5268, "disk_mib": 5024, "tmpdir": "<TBD>"}, "jobid": 3, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_1", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_1' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5268' 'mem_mib=5024' 'disk_mb=5268' 'disk_mib=5024' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/3.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/3.jobfailed'; exit 1)
+
+Submitted job 3 with external jobid '52855392'.
+
+[Fri Apr  4 12:09:09 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_9_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_9_2.rRNA.fastq.gz
+    jobid: 35
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_2.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_1.trimmed.fastq.gz
+    wildcards: sample=330_9
+    resources: mem_mb=4720, mem_mib=4502, disk_mb=4720, disk_mib=4502, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_9_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_9_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_9"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 4720, "mem_mib": 4502, "disk_mb": 4720, "disk_mib": 4502, "tmpdir": "<TBD>"}, "jobid": 35, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_9", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_9' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=4720' 'mem_mib=4502' 'disk_mb=4720' 'disk_mib=4502' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/35.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/35.jobfailed'; exit 1)
+
+Submitted job 35 with external jobid '52855393'.
+
+[Fri Apr  4 12:09:14 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_24_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_24_2.rRNA.fastq.gz
+    jobid: 95
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_2.trimmed.fastq.gz
+    wildcards: sample=330_24
+    resources: mem_mb=4832, mem_mib=4609, disk_mb=4832, disk_mib=4609, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_24_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_24_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_24"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 4832, "mem_mib": 4609, "disk_mb": 4832, "disk_mib": 4609, "tmpdir": "<TBD>"}, "jobid": 95, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_24", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_24' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=4832' 'mem_mib=4609' 'disk_mb=4832' 'disk_mib=4609' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/95.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/95.jobfailed'; exit 1)
+
+Submitted job 95 with external jobid '52855394'.
+
+[Fri Apr  4 12:09:18 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_20_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_20_2.rRNA.fastq.gz
+    jobid: 79
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_2.trimmed.fastq.gz
+    wildcards: sample=330_20
+    resources: mem_mb=5380, mem_mib=5131, disk_mb=5380, disk_mib=5131, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_20_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_20_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_20"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5380, "mem_mib": 5131, "disk_mb": 5380, "disk_mib": 5131, "tmpdir": "<TBD>"}, "jobid": 79, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_20", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_20' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5380' 'mem_mib=5131' 'disk_mb=5380' 'disk_mib=5131' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/79.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/79.jobfailed'; exit 1)
+
+Submitted job 79 with external jobid '52855395'.
+
+[Fri Apr  4 12:09:22 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_5_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_5_2.rRNA.fastq.gz
+    jobid: 19
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_2.trimmed.fastq.gz
+    wildcards: sample=330_5
+    resources: mem_mb=5291, mem_mib=5046, disk_mb=5291, disk_mib=5046, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_5_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_5_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_5"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5291, "mem_mib": 5046, "disk_mb": 5291, "disk_mib": 5046, "tmpdir": "<TBD>"}, "jobid": 19, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_5", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_5' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5291' 'mem_mib=5046' 'disk_mb=5291' 'disk_mib=5046' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/19.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/19.jobfailed'; exit 1)
+
+Submitted job 19 with external jobid '52855396'.
+
+[Fri Apr  4 12:09:26 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_16_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_16_2.rRNA.fastq.gz
+    jobid: 63
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_2.trimmed.fastq.gz
+    wildcards: sample=330_16
+    resources: mem_mb=5227, mem_mib=4985, disk_mb=5227, disk_mib=4985, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_16_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_16_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_16"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5227, "mem_mib": 4985, "disk_mb": 5227, "disk_mib": 4985, "tmpdir": "<TBD>"}, "jobid": 63, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_16", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_16' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5227' 'mem_mib=4985' 'disk_mb=5227' 'disk_mib=4985' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/63.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/63.jobfailed'; exit 1)
+
+Submitted job 63 with external jobid '52855397'.
+
+[Fri Apr  4 12:09:31 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_12_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_12_2.rRNA.fastq.gz
+    jobid: 47
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_2.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_1.trimmed.fastq.gz
+    wildcards: sample=330_12
+    resources: mem_mb=5924, mem_mib=5650, disk_mb=5924, disk_mib=5650, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_12_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_12_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_12"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5924, "mem_mib": 5650, "disk_mb": 5924, "disk_mib": 5650, "tmpdir": "<TBD>"}, "jobid": 47, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_12", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_12' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5924' 'mem_mib=5650' 'disk_mb=5924' 'disk_mib=5650' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/47.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/47.jobfailed'; exit 1)
+
+[Fri Apr  4 12:09:32 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 55
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_14_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_14_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_14_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_14_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855317
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 55, external: 52855317, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.55.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:09:32 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 39
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_10_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_10_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_10_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_10_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855318
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 39, external: 52855318, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.39.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:09:32 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 99
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_25_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_25_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_25_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_25_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855319
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 99, external: 52855319, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.99.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:09:32 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 23
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_6_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_6_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_6_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_6_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855387
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 23, external: 52855387, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.23.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:09:32 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 83
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_21_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_21_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_21_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_21_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855388
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 83, external: 52855388, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.83.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:09:32 2025]
+Error in rule kallisto_index_ERCC:
+    jobid: 101
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/ERCC92/ERCC92.fa
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/ERCC92/ERCC92.idx
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/22b5a97249245e41e3bcdfd348329ad0_
+    cluster_jobid: 26555423
+
+Error executing rule kallisto_index_ERCC on cluster (jobid: 101, external: 26555423, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.kallisto_index_ERCC.101.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:09:32 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 7
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_2_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_2_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_2_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_2_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855389
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 7, external: 52855389, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.7.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:09:32 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 67
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_17_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_17_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_17_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_17_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855390
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 67, external: 52855390, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.67.sh). For error details see the cluster log and the log files of the involved rule(s).
+Submitted job 47 with external jobid '52855398'.
+
+[Fri Apr  4 12:09:35 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_23_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_23_2.rRNA.fastq.gz
+    jobid: 91
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_2.trimmed.fastq.gz
+    wildcards: sample=330_23
+    resources: mem_mb=5057, mem_mib=4823, disk_mb=5057, disk_mib=4823, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_23_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_23_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_23"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5057, "mem_mib": 4823, "disk_mb": 5057, "disk_mib": 4823, "tmpdir": "<TBD>"}, "jobid": 91, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_23", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_23' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5057' 'mem_mib=4823' 'disk_mb=5057' 'disk_mib=4823' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/91.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/91.jobfailed'; exit 1)
+
+Submitted job 91 with external jobid '52855399'.
+
+[Fri Apr  4 12:09:39 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_8_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_8_2.rRNA.fastq.gz
+    jobid: 31
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_2.trimmed.fastq.gz
+    wildcards: sample=330_8
+    resources: mem_mb=4919, mem_mib=4692, disk_mb=4919, disk_mib=4692, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_8_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_8_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_8"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 4919, "mem_mib": 4692, "disk_mb": 4919, "disk_mib": 4692, "tmpdir": "<TBD>"}, "jobid": 31, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_8", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_8' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=4919' 'mem_mib=4692' 'disk_mb=4919' 'disk_mib=4692' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/31.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/31.jobfailed'; exit 1)
+
+[Fri Apr  4 12:09:43 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 63
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_16_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_16_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_16_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_16_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855397
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 63, external: 52855397, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.63.sh). For error details see the cluster log and the log files of the involved rule(s).
+Submitted job 31 with external jobid '52855400'.
+
+[Fri Apr  4 12:09:44 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_4_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_4_2.rRNA.fastq.gz
+    jobid: 15
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_2.trimmed.fastq.gz
+    wildcards: sample=330_4
+    resources: mem_mb=5226, mem_mib=4984, disk_mb=5226, disk_mib=4984, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_4_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_4_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_4"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5226, "mem_mib": 4984, "disk_mb": 5226, "disk_mib": 4984, "tmpdir": "<TBD>"}, "jobid": 15, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_4", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_4' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5226' 'mem_mib=4984' 'disk_mb=5226' 'disk_mib=4984' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/15.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/15.jobfailed'; exit 1)
+
+Submitted job 15 with external jobid '52855401'.
+
+[Fri Apr  4 12:09:48 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_19_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_19_2.rRNA.fastq.gz
+    jobid: 75
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_2.trimmed.fastq.gz
+    wildcards: sample=330_19
+    resources: mem_mb=5097, mem_mib=4861, disk_mb=5097, disk_mib=4861, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_19_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_19_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_19"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5097, "mem_mib": 4861, "disk_mb": 5097, "disk_mib": 4861, "tmpdir": "<TBD>"}, "jobid": 75, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_19", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_19' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5097' 'mem_mib=4861' 'disk_mb=5097' 'disk_mib=4861' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/75.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/75.jobfailed'; exit 1)
+
+Submitted job 75 with external jobid '52855402'.
+
+[Fri Apr  4 12:09:52 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_15_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_15_2.rRNA.fastq.gz
+    jobid: 59
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_2.trimmed.fastq.gz
+    wildcards: sample=330_15
+    resources: mem_mb=5179, mem_mib=4940, disk_mb=5179, disk_mib=4940, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_15_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_15_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_15"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5179, "mem_mib": 4940, "disk_mb": 5179, "disk_mib": 4940, "tmpdir": "<TBD>"}, "jobid": 59, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_15", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_15' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5179' 'mem_mib=4940' 'disk_mb=5179' 'disk_mib=4940' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/59.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/59.jobfailed'; exit 1)
+
+[Fri Apr  4 12:09:53 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 79
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_20_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_20_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_20_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_20_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855395
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 79, external: 52855395, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.79.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:09:53 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 51
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_13_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_13_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_13_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_13_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855391
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 51, external: 52855391, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.51.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:09:53 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 3
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_1_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_1_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_1_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_1_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855392
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 3, external: 52855392, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.3.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:09:53 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 35
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_9_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_9_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_9_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_9_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855393
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 35, external: 52855393, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.35.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:09:53 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 95
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_24_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_24_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_24_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_24_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855394
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 95, external: 52855394, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.95.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:09:53 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 19
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_5_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_5_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_5_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_5_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855396
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 19, external: 52855396, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.19.sh). For error details see the cluster log and the log files of the involved rule(s).
+Submitted job 59 with external jobid '52855403'.
+
+[Fri Apr  4 12:09:56 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_11_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_11_2.rRNA.fastq.gz
+    jobid: 43
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_2.trimmed.fastq.gz
+    wildcards: sample=330_11
+    resources: mem_mb=5113, mem_mib=4877, disk_mb=5113, disk_mib=4877, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_11_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_11_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_11"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5113, "mem_mib": 4877, "disk_mb": 5113, "disk_mib": 4877, "tmpdir": "<TBD>"}, "jobid": 43, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_11", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_11' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5113' 'mem_mib=4877' 'disk_mb=5113' 'disk_mib=4877' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/43.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/43.jobfailed'; exit 1)
+
+Submitted job 43 with external jobid '52855404'.
+
+[Fri Apr  4 12:10:01 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_7_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_7_2.rRNA.fastq.gz
+    jobid: 27
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_2.trimmed.fastq.gz
+    wildcards: sample=330_7
+    resources: mem_mb=5202, mem_mib=4962, disk_mb=5202, disk_mib=4962, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_7_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_7_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_7"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5202, "mem_mib": 4962, "disk_mb": 5202, "disk_mib": 4962, "tmpdir": "<TBD>"}, "jobid": 27, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_7", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_7' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5202' 'mem_mib=4962' 'disk_mb=5202' 'disk_mib=4962' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/27.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/27.jobfailed'; exit 1)
+
+[Fri Apr  4 12:10:04 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 31
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_8_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_8_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_8_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_8_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855400
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 31, external: 52855400, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.31.sh). For error details see the cluster log and the log files of the involved rule(s).
+Submitted job 27 with external jobid '52855405'.
+
+[Fri Apr  4 12:10:05 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_22_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_22_2.rRNA.fastq.gz
+    jobid: 87
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_2.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_1.trimmed.fastq.gz
+    wildcards: sample=330_22
+    resources: mem_mb=5493, mem_mib=5239, disk_mb=5493, disk_mib=5239, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_22_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_22_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_22"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5493, "mem_mib": 5239, "disk_mb": 5493, "disk_mib": 5239, "tmpdir": "<TBD>"}, "jobid": 87, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_22", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_22' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5493' 'mem_mib=5239' 'disk_mb=5493' 'disk_mib=5239' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/87.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/87.jobfailed'; exit 1)
+
+Submitted job 87 with external jobid '52855406'.
+
+[Fri Apr  4 12:10:09 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_3_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_3_2.rRNA.fastq.gz
+    jobid: 11
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_2.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_1.trimmed.fastq.gz
+    wildcards: sample=330_3
+    resources: mem_mb=5241, mem_mib=4999, disk_mb=5241, disk_mib=4999, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_3_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_3_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_3"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5241, "mem_mib": 4999, "disk_mb": 5241, "disk_mib": 4999, "tmpdir": "<TBD>"}, "jobid": 11, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_3", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_3' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5241' 'mem_mib=4999' 'disk_mb=5241' 'disk_mib=4999' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/11.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/11.jobfailed'; exit 1)
+
+Submitted job 11 with external jobid '52855407'.
+
+[Fri Apr  4 12:10:13 2025]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_18_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_18_2.rRNA.fastq.gz
+    jobid: 71
+    reason: Updated input files: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_2.trimmed.fastq.gz
+    wildcards: sample=330_18
+    resources: mem_mb=5005, mem_mib=4774, disk_mb=5005, disk_mib=4774, tmpdir=<TBD>
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_18_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_18_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_18"}, "params": {}, "log": [], "threads": 1, "resources": {"mem_mb": 5005, "mem_mib": 4774, "disk_mb": 5005, "disk_mib": 4774, "tmpdir": "<TBD>"}, "jobid": 71, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_18", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin/python3.12 -m snakemake --snakefile '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile' --target-jobs 'sample_rRNA_cleanup:sample=330_18' --allowed-rules 'sample_rRNA_cleanup' --cores 'all' --attempt 1 --force-use-threads  --resources 'mem_mb=5005' 'mem_mib=4774' 'disk_mb=5005' 'disk_mib=4774' --wait-for-files '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_1.trimmed.fastq.gz' '/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_2.trimmed.fastq.gz' --force --keep-target-files --keep-remote --max-inventory-time 0 --nocolor --notemp --no-hooks --nolock --ignore-incomplete --rerun-triggers 'code' 'software-env' 'input' 'params' 'mtime' --skip-script-cleanup  --conda-frontend 'mamba' --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --scheduler-solver-path '/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake_7/bin' --default-resources 'mem_mb=max(2*input.size_mb, 1000)' 'disk_mb=max(2*input.size_mb, 1000)' 'tmpdir=system_tmpdir' --mode 2 && touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/71.jobfinished' || (touch '/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/71.jobfailed'; exit 1)
+
+[Fri Apr  4 12:10:14 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 47
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_12_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_12_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_12_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_12_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855398
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 47, external: 52855398, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.47.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:10:14 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 91
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_23_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_23_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_23_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_23_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855399
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 91, external: 52855399, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.91.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:10:14 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 15
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_4_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_4_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_4_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_4_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855401
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 15, external: 52855401, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.15.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:10:14 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 75
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_19_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_19_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_19_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_19_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855402
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 75, external: 52855402, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.75.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:10:14 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 59
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_15_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_15_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_15_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_15_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855403
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 59, external: 52855403, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.59.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:10:14 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 43
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_11_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_11_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_11_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_11_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855404
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 43, external: 52855404, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.43.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Fri Apr  4 12:10:14 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 27
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_7_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_7_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_7_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_7_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855405
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 27, external: 52855405, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.27.sh). For error details see the cluster log and the log files of the involved rule(s).
+Submitted job 71 with external jobid '52855408'.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+[Fri Apr  4 12:10:34 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 87
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_22_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_22_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_22_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_22_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855406
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 87, external: 52855406, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.87.sh). For error details see the cluster log and the log files of the involved rule(s).
+Cleanup job metadata.
+[Fri Apr  4 12:10:34 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 11
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_3_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_3_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_3_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_3_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855407
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 11, external: 52855407, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.11.sh). For error details see the cluster log and the log files of the involved rule(s).
+Cleanup failed jobs output files.
+Cleanup job metadata.
+Cleanup failed jobs output files.
+[Fri Apr  4 12:10:34 2025]
+Error in rule sample_rRNA_cleanup:
+    jobid: 71
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_18_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_18_2.rRNA.fastq.gz
+    conda-env: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/conda/6e9188c21e1d8a85e4b024fb60cd715f_
+    shell:
+        
+            ribodetector_cpu -t 20                 -i /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_2.trimmed.fastq.gz                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_1.rRNA_removed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_2.rRNA_removed.fastq.gz                 -r /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_18_1.rRNA.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_18_2.rRNA.fastq.gz                 -e rrna -l 140 --chunk_size 256
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 52855408
+
+Error executing rule sample_rRNA_cleanup on cluster (jobid: 71, external: 52855408, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.9vvbvs_s/snakejob.sample_rRNA_cleanup.71.sh). For error details see the cluster log and the log files of the involved rule(s).
+Cleanup job metadata.
+Cleanup failed jobs output files.
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2025-04-04T120805.956419.snakemake.log
+unlocking
+removing lock
+removing lock
+removed all locks

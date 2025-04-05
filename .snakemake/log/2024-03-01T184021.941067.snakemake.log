@@ -1,0 +1,4 @@
+Exception in line 17 of /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile:
+The path for key raw_reads does not exist: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/raw/RNA
+  File "/kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile", line 17, in <module>
+  File "scripts/utils.py", line 50, in check_config

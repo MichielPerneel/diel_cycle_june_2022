@@ -1,0 +1,740 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 500
+Job counts:
+	count	jobs
+	1	all
+	25	bbmap
+	25	kallisto_quant_ERCC
+	1	merge_kallisto_ERCC
+	1	multiqc
+	25	rnaSPAdes
+	25	sample_rRNA_cleanup
+	103
+Resources before job selection: {'_cores': 9223372036854775807, '_nodes': 500}
+Ready jobs (26):
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	multiqc
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+Select jobs to execute...
+Selected jobs (26):
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	multiqc
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+	sample_rRNA_cleanup
+Resources after job selection: {'_cores': 9223372036854775781, '_nodes': 474}
+
+[Fri Mar  1 19:40:24 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_1_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_1_2.rRNA.fastq.gz
+    jobid: 54
+    wildcards: sample=330_1
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_1_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_1_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_1"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 54, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_1", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_1_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_1_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/54.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/54.jobfailed; exit 1)
+
+Submitted job 54 with external jobid '61770948'.
+
+[Fri Mar  1 19:40:28 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_18_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_18_2.rRNA.fastq.gz
+    jobid: 122
+    wildcards: sample=330_18
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_18_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_18_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_18"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 122, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_18", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_18_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_18_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/122.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/122.jobfailed; exit 1)
+
+Submitted job 122 with external jobid '61770949'.
+
+[Fri Mar  1 19:40:33 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_20_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_20_2.rRNA.fastq.gz
+    jobid: 130
+    wildcards: sample=330_20
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_20_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_20_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_20"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 130, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_20", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_20_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_20_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/130.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/130.jobfailed; exit 1)
+
+Submitted job 130 with external jobid '61770950'.
+
+[Fri Mar  1 19:40:38 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_5_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_5_2.rRNA.fastq.gz
+    jobid: 70
+    wildcards: sample=330_5
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_5_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_5_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_5"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 70, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_5", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_5_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_5_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/70.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/70.jobfailed; exit 1)
+
+Submitted job 70 with external jobid '61770951'.
+
+[Fri Mar  1 19:40:43 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_4_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_4_2.rRNA.fastq.gz
+    jobid: 66
+    wildcards: sample=330_4
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_4_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_4_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_4"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 66, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_4", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_4_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_4_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/66.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/66.jobfailed; exit 1)
+
+Submitted job 66 with external jobid '61770952'.
+
+[Fri Mar  1 19:40:47 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_3_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_3_2.rRNA.fastq.gz
+    jobid: 62
+    wildcards: sample=330_3
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_3_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_3_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_3"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 62, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_3", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_3_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_3_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/62.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/62.jobfailed; exit 1)
+
+Submitted job 62 with external jobid '61770953'.
+
+[Fri Mar  1 19:40:51 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_7_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_7_2.rRNA.fastq.gz
+    jobid: 78
+    wildcards: sample=330_7
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_7_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_7_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_7"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 78, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_7", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_7_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_7_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/78.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/78.jobfailed; exit 1)
+
+Submitted job 78 with external jobid '61770954'.
+
+[Fri Mar  1 19:40:54 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_9_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_9_2.rRNA.fastq.gz
+    jobid: 86
+    wildcards: sample=330_9
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_9_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_9_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_9"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 86, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_9", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_9_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_9_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/86.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/86.jobfailed; exit 1)
+
+Submitted job 86 with external jobid '61770955'.
+
+[Fri Mar  1 19:40:57 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_11_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_11_2.rRNA.fastq.gz
+    jobid: 94
+    wildcards: sample=330_11
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_11_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_11_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_11"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 94, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_11", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_11_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_11_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/94.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/94.jobfailed; exit 1)
+
+Submitted job 94 with external jobid '61770956'.
+
+[Fri Mar  1 19:41:01 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_13_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_13_2.rRNA.fastq.gz
+    jobid: 102
+    wildcards: sample=330_13
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_13_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_13_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_13"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 102, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_13", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_13_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_13_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/102.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/102.jobfailed; exit 1)
+
+Submitted job 102 with external jobid '61770957'.
+
+[Fri Mar  1 19:41:04 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_22_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_22_2.rRNA.fastq.gz
+    jobid: 138
+    wildcards: sample=330_22
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_22_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_22_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_22"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 138, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_22", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_22_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_22_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/138.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/138.jobfailed; exit 1)
+
+Submitted job 138 with external jobid '61770958'.
+
+[Fri Mar  1 19:41:08 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_24_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_24_2.rRNA.fastq.gz
+    jobid: 146
+    wildcards: sample=330_24
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_24_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_24_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_24"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 146, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_24", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_24_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_24_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/146.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/146.jobfailed; exit 1)
+
+Submitted job 146 with external jobid '61770959'.
+
+[Fri Mar  1 19:41:11 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_15_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_15_2.rRNA.fastq.gz
+    jobid: 110
+    wildcards: sample=330_15
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_15_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_15_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_15"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 110, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_15", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_15_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_15_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/110.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/110.jobfailed; exit 1)
+
+Submitted job 110 with external jobid '61770960'.
+
+[Fri Mar  1 19:41:14 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_17_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_17_2.rRNA.fastq.gz
+    jobid: 118
+    wildcards: sample=330_17
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_17_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_17_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_17"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 118, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_17", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_17_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_17_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/118.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/118.jobfailed; exit 1)
+
+Submitted job 118 with external jobid '61770961'.
+
+[Fri Mar  1 19:41:20 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_6_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_6_2.rRNA.fastq.gz
+    jobid: 74
+    wildcards: sample=330_6
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_6_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_6_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_6"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 74, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_6", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_6_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_6_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/74.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/74.jobfailed; exit 1)
+
+Submitted job 74 with external jobid '61770962'.
+
+[Fri Mar  1 19:41:25 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_2_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_2_2.rRNA.fastq.gz
+    jobid: 58
+    wildcards: sample=330_2
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_2_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_2_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_2"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 58, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_2", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_2_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_2_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/58.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/58.jobfailed; exit 1)
+
+Submitted job 58 with external jobid '61770963'.
+
+[Fri Mar  1 19:41:30 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_19_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_19_2.rRNA.fastq.gz
+    jobid: 126
+    wildcards: sample=330_19
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_19_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_19_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_19"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 126, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_19", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_19_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_19_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/126.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/126.jobfailed; exit 1)
+
+Submitted job 126 with external jobid '61770964'.
+
+[Fri Mar  1 19:41:34 2024]
+rule multiqc:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_2_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_1_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_1_fastqc.zip, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_2_fastqc.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_2_fastqc.zip
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/multiqc_report.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/multiqc_data
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/multiqc/multiqc.log
+    jobid: 51
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "multiqc", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_2_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_1_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_1_fastqc.zip", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_2_fastqc.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_2_fastqc.zip"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/multiqc_report.html", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/multiqc_data"], "wildcards": {}, "params": {}, "log": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/multiqc/multiqc.log"], "threads": 1, "resources": {}, "jobid": 51, "cluster": {"jobname": "multiqc.", "nodes": 1, "ppn": 8, "mem": "8gb", "walltime": "06:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/multiqc_report.html --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_2_fastqc.zip --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules multiqc --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/51.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/51.jobfailed; exit 1)
+
+Submitted job 51 with external jobid '61770965'.
+
+[Fri Mar  1 19:41:37 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_8_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_8_2.rRNA.fastq.gz
+    jobid: 82
+    wildcards: sample=330_8
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_8_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_8_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_8"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 82, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_8", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_8_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_8_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/82.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/82.jobfailed; exit 1)
+
+Submitted job 82 with external jobid '61770966'.
+
+[Fri Mar  1 19:41:41 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_10_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_10_2.rRNA.fastq.gz
+    jobid: 90
+    wildcards: sample=330_10
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_10_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_10_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_10"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 90, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_10", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_10_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_10_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/90.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/90.jobfailed; exit 1)
+
+Submitted job 90 with external jobid '61770967'.
+
+[Fri Mar  1 19:41:44 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_21_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_21_2.rRNA.fastq.gz
+    jobid: 134
+    wildcards: sample=330_21
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_21_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_21_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_21"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 134, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_21", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_21_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_21_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/134.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/134.jobfailed; exit 1)
+
+Submitted job 134 with external jobid '61770968'.
+
+[Fri Mar  1 19:41:48 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_12_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_12_2.rRNA.fastq.gz
+    jobid: 98
+    wildcards: sample=330_12
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_12_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_12_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_12"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 98, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_12", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_12_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_12_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/98.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/98.jobfailed; exit 1)
+
+Submitted job 98 with external jobid '61770969'.
+
+[Fri Mar  1 19:41:51 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_14_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_14_2.rRNA.fastq.gz
+    jobid: 106
+    wildcards: sample=330_14
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_14_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_14_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_14"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 106, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_14", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_14_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_14_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/106.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/106.jobfailed; exit 1)
+
+Submitted job 106 with external jobid '61770970'.
+
+[Fri Mar  1 19:41:55 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_23_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_23_2.rRNA.fastq.gz
+    jobid: 142
+    wildcards: sample=330_23
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_23_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_23_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_23"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 142, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_23", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_23_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_23_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/142.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/142.jobfailed; exit 1)
+
+Submitted job 142 with external jobid '61770971'.
+
+[Fri Mar  1 19:41:58 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_25_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_25_2.rRNA.fastq.gz
+    jobid: 150
+    wildcards: sample=330_25
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_25_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_25_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_25"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 150, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_25", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_25_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_25_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/150.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/150.jobfailed; exit 1)
+
+Submitted job 150 with external jobid '61770972'.
+
+[Fri Mar  1 19:42:02 2024]
+rule sample_rRNA_cleanup:
+    input: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_1.trimmed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_2.trimmed.fastq.gz
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_1.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_2.rRNA_removed.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_16_1.rRNA.fastq.gz, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_16_2.rRNA.fastq.gz
+    jobid: 114
+    wildcards: sample=330_16
+
+Jobscript:
+#!/bin/sh
+# properties = {"type": "single", "rule": "sample_rRNA_cleanup", "local": false, "input": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_1.trimmed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_2.trimmed.fastq.gz"], "output": ["/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_1.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_2.rRNA_removed.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_16_1.rRNA.fastq.gz", "/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/rRNA/330_16_2.rRNA.fastq.gz"], "wildcards": {"sample": "330_16"}, "params": {}, "log": [], "threads": 1, "resources": {}, "jobid": 114, "cluster": {"jobname": "sample_rRNA_cleanup.sample=330_16", "nodes": 1, "ppn": 20, "mem": "30gb", "walltime": "08:00:00", "account": "vsc43619", "email": "michiel.perneel@ugent.be", "mailon": "ae", "jobout": "oe", "queue": "doduo", "outdir": "/data/gent/vo/001/gvo00125/vsc43619/spring_campaign_2023/data/logs/"}}
+ cd /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles && \
+PATH='/data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin':$PATH /data/gent/vo/001/gvo00125/vsc43619/envs/snakemake/bin/python3.9 \
+-m snakemake /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/cleanup/330_16_1.rRNA_removed.fastq.gz --snakefile /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/Snakefile \
+--force -j --keep-target-files --keep-remote --max-inventory-time 0 \
+--wait-for-files /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_1.trimmed.fastq.gz /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/trimmed/330_16_2.trimmed.fastq.gz /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/envs/e4ba8c232eed5235ca1af40bce6c2bcd --latency-wait 60 \
+ --attempt 1 --force-use-threads --scheduler ilp \
+--wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules sample_rRNA_cleanup --nocolor --notemp --no-hooks --nolock \
+--mode 2  --use-conda  --conda-prefix envs/  && touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/114.jobfinished || (touch /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/114.jobfailed; exit 1)
+
+Submitted job 114 with external jobid '61770974'.
+[Fri Mar  1 19:44:24 2024]
+Error in rule multiqc:
+    jobid: 51
+    output: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/multiqc_report.html, /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/multiqc_data
+    log: /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/multiqc/multiqc.log (check log file(s) for error message)
+    shell:
+        
+        module load MultiQC
+        multiqc /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_1_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_2_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_3_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_4_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_5_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_6_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_7_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_8_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_9_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_10_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_11_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_12_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_13_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_14_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_15_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_16_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_17_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_18_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_19_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_20_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_21_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_22_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_23_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_24_2_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_1_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_1_fastqc.zip /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_2_fastqc.html /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/fastqc/330_25_2_fastqc.zip                 --force                 -o /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/scratch/multiqc_data                 -n /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/quality_control/multiqc_report.html                 &> /data/gent/vo/001/gvo00125/vsc43619/diel_cycles/data/logs/multiqc/multiqc.log
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 61770965
+
+Error executing rule multiqc on cluster (jobid: 51, external: 61770965, jobscript: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/tmp.ojtj1yyb/snakejob.multiqc.51.sh). For error details see the cluster log and the log files of the involved rule(s).
+Cleanup job metadata.
+Cleanup failed jobs output files.
+[Fri Mar  1 20:22:49 2024]
+Finished job 122.
+1 of 103 steps (0.97%) done
+[Fri Mar  1 20:23:37 2024]
+Finished job 70.
+2 of 103 steps (2%) done
+[Fri Mar  1 20:24:38 2024]
+Finished job 78.
+3 of 103 steps (3%) done
+[Fri Mar  1 20:25:26 2024]
+Finished job 54.
+4 of 103 steps (4%) done
+[Fri Mar  1 20:26:38 2024]
+Finished job 66.
+5 of 103 steps (5%) done
+[Fri Mar  1 20:27:38 2024]
+Finished job 62.
+6 of 103 steps (6%) done
+[Fri Mar  1 20:28:01 2024]
+Finished job 102.
+7 of 103 steps (7%) done
+[Fri Mar  1 20:29:41 2024]
+Finished job 114.
+8 of 103 steps (8%) done
+[Fri Mar  1 20:30:24 2024]
+Finished job 86.
+9 of 103 steps (9%) done
+[Fri Mar  1 20:30:36 2024]
+Finished job 90.
+10 of 103 steps (10%) done
+[Fri Mar  1 20:32:03 2024]
+Finished job 118.
+11 of 103 steps (11%) done
+[Fri Mar  1 20:32:14 2024]
+Finished job 94.
+12 of 103 steps (12%) done
+[Fri Mar  1 20:32:14 2024]
+Finished job 138.
+13 of 103 steps (13%) done
+[Fri Mar  1 20:33:32 2024]
+Finished job 130.
+14 of 103 steps (14%) done
+[Fri Mar  1 20:34:38 2024]
+Finished job 134.
+15 of 103 steps (15%) done
+[Fri Mar  1 20:35:00 2024]
+Finished job 146.
+16 of 103 steps (16%) done
+[Fri Mar  1 20:35:31 2024]
+Finished job 110.
+17 of 103 steps (17%) done
+[Fri Mar  1 20:35:51 2024]
+Finished job 82.
+18 of 103 steps (17%) done
+[Fri Mar  1 20:37:31 2024]
+Finished job 126.
+19 of 103 steps (18%) done
+[Fri Mar  1 20:39:11 2024]
+Finished job 150.
+20 of 103 steps (19%) done
+[Fri Mar  1 20:40:31 2024]
+Finished job 142.
+21 of 103 steps (20%) done
+[Fri Mar  1 20:41:12 2024]
+Finished job 58.
+22 of 103 steps (21%) done
+[Fri Mar  1 20:44:52 2024]
+Finished job 74.
+23 of 103 steps (22%) done
+[Fri Mar  1 20:46:52 2024]
+Finished job 106.
+24 of 103 steps (23%) done
+[Fri Mar  1 20:52:22 2024]
+Finished job 98.
+25 of 103 steps (24%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /kyukon/data/gent/vo/001/gvo00125/vsc43619/diel_cycles/.snakemake/log/2024-03-01T194007.722808.snakemake.log
+unlocking
+removing lock
+removing lock
+removed all locks
