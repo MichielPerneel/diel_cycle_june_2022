@@ -38,15 +38,35 @@ rule eukprot_annotation:
     threads: 60
     resources:
         mem_mb=250000
+    log:
+        os.path.join(config['log_dir'], 'eukprot_annotation.log')
     shell:'''
     unset OMP_PROC_BIND
 
     module load MMseqs2
 
     # Query assembly against reference
-    mmseqs search {input.metatranscriptome_mmseqsDB} {input.eukprot_mmseqsDB} {params.eukprot_out_dir}/resultDB {params.tmp} -s 6
+    mmseqs search {input.metatranscriptome_mmseqsDB} {input.eukprot_mmseqsDB} {params.eukprot_out_dir}/resultDB {params.tmp} -s 6  > {log} 2>&1
 
     # Extract first hit
-    mmseqs filterdb {params.eukprot_out_dir}/resultDB {params.eukprot_out_dir}/resultDB.firsthit --extract-lines 1
-    mmseqs convertalis {input.metatranscriptome_mmseqsDB} {input.eukprot_mmseqsDB} {params.eukprot_out_dir}/resultDB.firsthit {output}
+    mmseqs filterdb {params.eukprot_out_dir}/resultDB {params.eukprot_out_dir}/resultDB.firsthit --extract-lines 1 >> {log} 2>&1
+    mmseqs convertalis {input.metatranscriptome_mmseqsDB} {input.eukprot_mmseqsDB} {params.eukprot_out_dir}/resultDB.firsthit {output} >> {log} 2>&1
+    '''
+
+rule eukulele_eukprot:
+    input:
+        pep = os.path.join(config['output_dir'], 'assembly', 'protein', 'metatranscriptome.pep')
+    output:
+        eukulele_done = os.path.join(config['output_dir'], 'annotation', 'taxonomy_eukulele', 'eukprot', 'EUKulele_done.txt')
+    params:
+        sampledir = os.path.join(config['output_dir'], 'assembly', 'protein'),
+        eukulele_directory = os.path.join(config['output_dir'], 'annotation', 'taxonomy_eukulele', 'eukprot'),
+        eukulele_reference_dir = config['eukulele_eukprot_ref_dir'],
+        reference_pep_fa_gz = config['eukulele_eukprot_ref_fa'],
+    conda: 'EUKulele_2'
+    log: os.path.join(config['log_dir'], 'eukulele_eukprot.log')
+    shell:'''
+    which EUKulele
+    EUKulele --mets_or_mags mets --sample_dir {params.sampledir} --p_ext ".pep" --reference_dir {params.eukulele_reference_dir} --ref_fasta {params.reference_pep_fa_gz} -o {params.eukulele_directory} > {log} 2>&1
+    touch {output.eukulele_done}
     '''

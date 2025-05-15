@@ -41,4 +41,5 @@ rule all:
        os.path.join(config['output_dir'], 'assembly', 'rnaSPAdes', 'final_metatranscriptome.fasta'),
        os.path.join(config['output_dir'], 'annotation', 'taxonomy_eukprot', 'eukprot_annotation.m8'),
        os.path.join(config['output_dir'], 'annotation', 'functional_eggnog', 'functional_annotation.emapper.annotations'),
-       expand(os.path.join(config['output_dir'], 'quantification', '{sample}'), sample=samples)
+       expand(os.path.join(config['output_dir'], 'quantification', '{sample}'), sample=samples),
+       os.path.join(config['output_dir'], 'annotation', 'taxonomy_eukulele', 'eukprot', 'EUKulele_done.txt')
